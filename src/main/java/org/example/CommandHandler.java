@@ -6,16 +6,22 @@ public class CommandHandler {
 
     private final Piatto[] testData = Piatto.testData();
     private final Gson gson = new Gson();
+    private TcpConnection conn;
 
-    public CommandHandler(){
+    public CommandHandler(TcpConnection conn){
+        this.conn = conn;
     }
 
     public String execute(String cmd){
-        String response;
+        String response = null;
 
         switch (cmd){
             case "all":
                 response = gson.toJson(testData);
+                break;
+
+            case "quit", "q":
+                conn.close();
                 break;
 
             default:
