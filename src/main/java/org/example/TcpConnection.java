@@ -15,6 +15,14 @@ public class TcpConnection {
         setSocket(socket);
     }
 
+    public void close(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     //reads string from the other side, returns null upon failure
     public String read(){
         String result = null;
@@ -38,6 +46,7 @@ public class TcpConnection {
             writer = new PrintWriter(
                     socket.getOutputStream(), true
             );
+            writer.flush();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
