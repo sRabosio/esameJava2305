@@ -13,6 +13,12 @@ public class Piatto {
         this.price = price;
     }
 
+    public int expensive(Piatto p){
+        if(this.price > p.getPrice())
+            return 1;
+        return 0;
+    }
+
     public static Piatto[] testData(){
         return new Piatto[]{
                 new Piatto(1, "lorem pollo", "Risotto alla milanese", 23.99),
