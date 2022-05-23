@@ -25,7 +25,7 @@ public class Server {
         System.out.println("--server started");
     }
 
-    private static void waitClients(){
+    private static void newHandler(){
         System.out.println("--waiting clients");
         try {
             new Thread(new ClientHandler(
@@ -35,5 +35,10 @@ public class Server {
             System.out.println(e.getMessage());
             exit(-1);
         }
+    }
+
+    private static void waitClients(){
+        while(true)
+            newHandler();
     }
 }
