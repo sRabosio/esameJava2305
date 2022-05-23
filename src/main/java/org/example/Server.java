@@ -1,6 +1,5 @@
 package org.example;
 
-import com.sun.security.ntlm.Client;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -31,7 +30,7 @@ public class Server {
         try {
             new Thread(new ClientHandler(
                     server.accept()
-            ));
+            )).start();
         } catch (IOException e) {
             System.out.println(e.getMessage());
             exit(-1);
