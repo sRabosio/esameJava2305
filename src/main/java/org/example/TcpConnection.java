@@ -30,12 +30,13 @@ public class TcpConnection {
     //writes string to the other side
     public void write(String msg){
         writer.write(msg);
+        writer.flush();
     }
 
     private void initWriter(){
         try {
             writer = new PrintWriter(
-                    socket.getOutputStream()
+                    socket.getOutputStream(), true
             );
         } catch (IOException e) {
             System.out.println(e.getMessage());
